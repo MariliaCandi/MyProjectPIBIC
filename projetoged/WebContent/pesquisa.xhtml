@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>Amprodoc</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<!-- Bootstrap -->
+	<link href="resources/css/bootstrap.min.css" rel="stylesheet" />
+	<script type="text/javascript" src="resources/js/bootstrap.js"></script>
+
+	<!-- paginação -->	
+	<script type="text/javascript" src="resources/js/jquery.min.js"></script>
+	<link href="http://www.jqueryscript.net/css/jquerysctipttop.css"
+		rel="stylesheet" type="text/css" />
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"
+		type="text/javascript"></script>
+	<script src="resources/js/jquery.bdt.js" type="text/javascript"></script>
+	
+	<!-- Custom CSS -->
+    <link href="resources/css/landing-page.css" rel="stylesheet"/>
+   
+	<script>
+	    $(document).ready( function () {
+	        $('#tabelaDoc').bdt();
+	    });
+	</script>
+
+</h:head>
+<body>
+
+<nav class="navbar navbar-inverse" >
+		<img src="resources/img/logo.png"  id="logo1" />
+		<div class="container-fluid" >
+			<div class="navbar-header" >							
+				<div class="col-lg-7 col-md-offset-1" >			
+					<div class="item">
+						<h:form>					
+							<div class="input-group">
+								<h:inputText onfocus="this.value='';" class="form-control"
+									value="#{documentoBean.consulta}" />
+								<div class="input-group-btn">
+									<h:commandButton class="btn btn-default" value="Pesquisar"
+										action="#{documentoBean.listaDocumentos}" />
+								</div>
+							</div>
+						</h:form>
+					</div>
+				</div>	
+			</div>
+		</div>
+		<br/>
+	</nav>
+
+	
+	<div class="col-lg-7 col-md-offset-1">		
+		<br /> <br />
+
+		<h:dataTable id="tabelaDoc" value="#{documentoBean.documentos}"
+			var="documento" border="0" cellspacing="20">
+			
+			<!-- Nomes e links dos arquivos -->				
+			<h:column>
+			<h:form>
+				<!-- abre documento em nova aba -->
+				
+				<h:commandLink target="_blank"  action="#{documentoBean.redirecionaUrl}"><h:outputText
+						value="#{documento.nomeArquivo}" />	
+						
+						<f:setPropertyActionListener value="#{documento.extensao}" target="#{documentoBean.extensao}" />
+						
+						<!-- seta o atributo 'url' no bean com a url referente ao nome do documento clicado-->
+						<f:setPropertyActionListener value="#{documento.url}" target="#{documentoBean.url}" />
+						
+						<!-- seta o atributo 'numeroPaginas' no bean com o numero de paginas  referente ao nome do documento clicado-->
+						<f:setPropertyActionListener value="#{documento.numeroPaginas}" target="#{documentoBean.numeroPaginas}" />  					
+				</h:commandLink>			
+						<br/>
+							
+						<h:outputText value="#{documento.dataCriacao}" class="data"/>			
+						<h:outputText value="Score: #{documento.score}." class="score"/>
+						<br/>
+						<h:outputText value="#{documento.conteudoTextual}" class="data"/>
+				</h:form>
+			</h:column>
+			
+			
+		</h:dataTable>
+		<br />	<br />	<br /> <br />	<br />	<br />
+	</div>
+	
+</body>
+</html>

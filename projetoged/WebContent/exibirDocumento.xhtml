@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>Documento</title>
+	<!-- Bootstrap -->
+	<link href="resources/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="resources/css/style.css" rel="stylesheet" />
+
+	<link href="resources/css/documento.css" rel="stylesheet" />
+	<script
+		src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js">
+	
+	</script>
+	
+	
+
+	
+</h:head>
+<body>
+	
+	<div ng-app="myApp" ng-controller="myCtrl">
+		
+		<nav>
+			<ul class="pager">
+				<li><a ng-click="count = 1"><img src="resources/img/primeiro.ico"/></a></li>
+				<li><a onclick="travaAnterior();" ng-click="count = count - 1" id="desabilitarAnterior"><img src="resources/img/anterior.ico"/></a></li>
+					<h:outputText value="  {{ count }} / #{documentoBean.numeroPaginas} "/>
+				<li><a onclick="travaProximo();" ng-click="count = count + 1" id="travaProximo"><img src="resources/img/proximo.ico"/></a></li>
+				<li><a ng-click="count = #{documentoBean.numeroPaginas}"><img src="resources/img/ultimo.ico"/></a></li>
+				<li><a href="http://localhost:8080/projetoged#{documentoBean.url}"><img src="resources/img/download.ico"/></a></li>
+				
+			</ul>
+		</nav>
+		
+			<object type="text/html"
+			data="http://localhost:8080/projetoged#{documentoBean.url}/{{ count }}"
+			id="estiloDoc"> </object>
+
+	</div>
+	
+			
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('myCtrl', function($scope) {
+			$scope.count = 1;
+		});	
+		
+	</script>
+
+	
+</body>
+</html>
