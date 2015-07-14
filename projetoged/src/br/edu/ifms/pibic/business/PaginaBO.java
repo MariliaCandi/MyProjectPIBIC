@@ -8,6 +8,8 @@ import org.apache.lucene.document.CompressionTools;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
+
 import br.edu.ifms.pibic.dao.DocumentoDAO;
 import br.edu.ifms.pibic.dao.PaginaDAO;
 import br.edu.ifms.pibic.model.Documento;
@@ -62,7 +64,12 @@ public class PaginaBO {
 	 * @return
 	 */
 	public File pegaDocumento(String hash) {
+		
+		File arquivo = new File("");
 		Documento documento = documentoDAO.recupera(hash);
+		//editado por mim
+		String extensao = documento.getExtensao();
+		String nome = documento.getNomeArquivo();
 		
 		if (documento != null) {			
 			List<Pagina> paginasDocumento = paginaDAO
@@ -72,19 +79,20 @@ public class PaginaBO {
 					List<File> arquivosPaginas = new ArrayList<File>();
 					for (Pagina pagina : paginasDocumento) {
 						byte[] bytesPagina = pagina.getBytesPagina();
-						File arquivo = FileUtil.fromByteArrayToFile(
-								bytesPagina, null);
-						
-						System.out.println("Teste: "+arquivo);
-						
+						arquivo = FileUtil.fromByteArrayToFile(
+								bytesPagina, nome);
+														
 						
 						arquivosPaginas.add(arquivo);
 					}
-					File arquivoDestino = PDFUtil.juntaArquivos(
-							arquivosPaginas, documento.getNomeArquivo());
-					logger.info("Documento gerado.");
-					System.out.println("Teste: "+arquivoDestino);
-					return arquivoDestino;
+					if(extensao.equals(".pdf")){
+						File arquivoDestino = PDFUtil.juntaArquivos(
+								arquivosPaginas, documento.getNomeArquivo());
+						logger.info("Documento gerado.");					
+						return arquivoDestino;
+					}
+					return arquivo;
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

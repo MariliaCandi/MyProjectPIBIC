@@ -40,8 +40,7 @@ public class DownloadService {
 		File arquivoDocumento = paginaBO.pegaDocumento(hash);
 		if (arquivoDocumento != null) {
 			ResponseBuilder response = Response.ok((Object) arquivoDocumento);
-			String nomeArquivo = arquivoDocumento.getName().split(".pdf")[0]
-					+ ".pdf";
+			String nomeArquivo = arquivoDocumento.getName();//.split(".pdf")[0] + ".pdf";
 			response.header("Content-Disposition", "attachment; filename="
 					+ nomeArquivo);
 			return response.type("application/pdf").build();
