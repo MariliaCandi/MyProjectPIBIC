@@ -66,8 +66,19 @@
 			<h:column>
 			<h:form>
 				<!-- abre documento em nova aba -->
+				<script>
+					function abreLink(extencao, url){
+						
+						if(extencao == '.pdf') {
+							 window.open('http://localhost:8080/projetoged/exibirDocumento.xhtml');  
+						}else{							
+							window.open('http://localhost:8080/projetoged'+url); 
+						}
+					
+					}
+				</script>
 				
-				<h:commandLink target="_blank"  action="#{documentoBean.redirecionaUrl}"><h:outputText
+				<h:commandLink   onclick="abreLink('#{documento.extensao}','#{documento.url}')"><h:outputText
 						value="#{documento.nomeArquivo}" />	
 						
 						<f:setPropertyActionListener value="#{documento.extensao}" target="#{documentoBean.extensao}" />
