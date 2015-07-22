@@ -77,8 +77,10 @@ public class DocumentoDAO extends JpaDAO<Documento> {
 	
 	public static void main(String[] args) {
 		DocumentoDAO doc = new DocumentoDAO();
-		List<Documento> documento = doc.recuperaPorConteudo("Marilia");
-		System.out.println(documento.get(0).getConteudoTextual());
+		List<Documento> documento = doc.recuperaPorConteudo("sistema");
+		for(int i=0; i<documento.size(); i++){
+			System.out.println(i+"- "+documento.get(i).getNomeArquivo());
+		}
 	}
 
 }

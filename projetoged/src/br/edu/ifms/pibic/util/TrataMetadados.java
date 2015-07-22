@@ -63,16 +63,16 @@ public class TrataMetadados {
 			tempo = anoAtual - anoDoc;
 			
 			if (tempo == 1) {
-				tempoPostado = "H· "+tempo + " ano atr·s. ";
-				tempoPostado = "H· "+tempo + " anos atr·s.";
+				tempoPostado = "H√° "+tempo + " ano atr√°s. ";
+				tempoPostado = "H√° "+tempo + " anos atr√°s.";
 			}
 
 		} else if (mesAtual > mesDoc) {
 			tempo = mesAtual - mesDoc;
 			if (tempo == 1) {
-				tempoPostado = "H· "+tempo + " mes atr·s.";
+				tempoPostado = "H√° "+tempo + " mes atr√°s.";
 			} else {
-				tempoPostado = "H· "+tempo + " meses atr·s.";
+				tempoPostado = "H√° "+tempo + " meses atr√°s.";
 			}
 
 		} else {
@@ -80,9 +80,9 @@ public class TrataMetadados {
 			if(tempo == 0){
 				tempoPostado = "Postado hoje.";
 			}else if (tempo == 1) {
-				tempoPostado = "H· "+tempo + " dia atr·s.";
+				tempoPostado = "H√° "+tempo + " dia atr√°s.";
 			} else {
-				tempoPostado = "H· "+tempo + " dias atr·s.";
+				tempoPostado = "H√° "+tempo + " dias atr√°s.";
 			}
 		}
 

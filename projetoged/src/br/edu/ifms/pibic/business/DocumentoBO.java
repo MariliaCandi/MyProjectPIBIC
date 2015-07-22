@@ -260,8 +260,9 @@ public class DocumentoBO {
 
 	public static void main(String[] args) {
 		DocumentoBO documentoBO = new DocumentoBO();
-		documentoBO.varreDiretorio("/home/marilia/mega/Pessoal/Aulas de Ingles");
+		documentoBO.varreDiretorio("/home/marilia/documentos para teste");
 		//documentoBO.reindexaBaseInteira();
 		System.out.println("Terminado");
+		
 	}
 }

@@ -4,6 +4,14 @@
   <welcome-file-list>
   	<welcome-file>index.xhtml</welcome-file>
   </welcome-file-list>
+  
+
+  
+  <mime-mapping>
+    <extension>jsp <!--{or the extension of file}--></extension>
+    <mime-type>text/html</mime-type>
+  </mime-mapping>
+  
   <servlet>
     <servlet-name>Faces Servlet</servlet-name>
     <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>

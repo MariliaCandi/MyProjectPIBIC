@@ -101,7 +101,7 @@ public static String pegaTextoExcelXLSX(File caminho){
 	}
 
 public static void main(String[] args) {
-	File file = new File("/home/marilia/mega/IFMS/Disciplinas/5ºPeriodo/Sistemas Disribuidos/transparencia.docx");
+	File file = new File("/home/marilia/documentos para teste/texto Para Teste.docx");
 	System.out.println(pegaTextoWordDOCX(file));
 }
 

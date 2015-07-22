@@ -6,44 +6,33 @@
 
 <h:head>
 	<title>Projeto PIBIC</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />	
-	<!-- Bootstrap -->		
-	<link href="resources/css/bootstrap.min.css" rel="stylesheet" />
-	
-	 <!-- Custom CSS -->
-    <link href="resources/css/landing-page.css" rel="stylesheet"/>
 
-	
+	<!-- Bootstrap -->
+	<link href="resources/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="resources/css/estiloIndex.css" rel="stylesheet" />
+
+
+
 </h:head>
 <h:body>
 
-<div class="intro-header">
-        <div class="container">
+	<div class="intro-message">
+		<img src="resources/img/logo.png" id="logo" />
+		<h:form>
+			<div class="col-md-8 col-md-offset-2 ">
+				<div class="input-group">
+					<h:inputText onfocus="this.value='';" id="textoPesquisa"
+						class="form-control" value="#{documentoBean.consulta}" />
+					<div class="input-group-btn">
+						<h:commandButton class="btn btn-default"
+							action="#{documentoBean.redirecionaConsulta}" value="Pesquisar" />
+					</div>
+				</div>
 
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="intro-message">
-                        <img src="resources/img/logo.png"  id="logo"/>
-                        <h:form>
-							<div class="col-md-8 col-md-offset-2 ">				
-								<div class="input-group">
-									<h:inputText onfocus="this.value='';" id="textoPesquisa"
-										class="form-control" value="#{documentoBean.consulta}" />
-									<div class="input-group-btn">
-										<h:commandButton class="btn btn-default"
-											action="#{documentoBean.redirecionaConsulta}" value="Pesquisar" />
-									</div>
-								</div>
-				
-							</div>
-						
-					</h:form>     
-                    </div>                     
-                </div>
-            </div>
-        </div>       
-    </div> 
+			</div>
 
-  
+		</h:form>
+	</div>
+
 </h:body>
 </html>
