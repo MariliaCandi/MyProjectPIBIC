@@ -1,0 +1,25 @@
+a{
+	
+	font-size: 18px;
+}
+
+.data{
+	font-weight: normal;
+	
+}
+
+.score{
+	font-weight: normal;
+	padding: 10%;
+}
+
+table, ht, td{
+	
+	border-collapse: separate;
+	border-spacing: 8px;	
+	padding: 4px;
+}
+
+.navbar-header{
+	padding-top: 2em;
+}

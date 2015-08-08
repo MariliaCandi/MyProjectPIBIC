@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>Projeto PIBIC</title>
+
+	<!-- Bootstrap -->
+	<link href="resources/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="resources/css/estiloIndex.css" rel="stylesheet" />
+
+
+
+</h:head>
+<h:body>
+
+	<div class="intro-message">
+	<div class="col-md-offset-3">
+		<img src="resources/img/logoAmprodoc.jpg" class="img-responsive" />
+	</div>
+		<h:form>
+			<div class="col-md-8 col-md-offset-2 ">
+				
+				<div class="input-group">
+					<h:inputText onfocus="this.value='';" id="textoPesquisa"
+						class="form-control" value="#{documentoBean.consulta}" />
+					<div class="input-group-btn">
+						<h:commandButton class="btn btn-default"
+							action="#{documentoBean.redirecionaConsulta}" value="Pesquisar" />
+					</div>
+				</div>
+
+			</div>
+
+		</h:form>
+	</div>
+
+</h:body>
+</html>
