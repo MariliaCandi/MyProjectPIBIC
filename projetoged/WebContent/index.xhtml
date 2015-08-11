@@ -4,38 +4,44 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 
-<h:head>
+<head>
 	<title>Projeto PIBIC</title>
 
 	<!-- Bootstrap -->
 	<link href="resources/css/bootstrap.min.css" rel="stylesheet" />
 	<link href="resources/css/estiloIndex.css" rel="stylesheet" />
 
+<script>
+	 window.onload = function() {
+	        document.getElementById('formulario:pesquisa').focus();
+	    }
+</script>
 
-
-</h:head>
-<h:body>
-
-	<div class="intro-message">
+</head>
+<body>
+ 
+	
 	<div class="col-md-offset-3">
 		<img src="resources/img/logoAmprodoc.jpg" class="img-responsive" />
 	</div>
-		<h:form>
+		<h:form id="formulario">
 			<div class="col-md-8 col-md-offset-2 ">
 				
 				<div class="input-group">
-					<h:inputText onfocus="this.value='';" id="textoPesquisa"
+					<h:inputText type="text"  id="pesquisa"
 						class="form-control" value="#{documentoBean.consulta}" />
 					<div class="input-group-btn">
 						<h:commandButton class="btn btn-default"
-							action="#{documentoBean.redirecionaConsulta}" value="Pesquisar" />
+							action="#{documentoBean.redirecionaConsulta}"  value="Pesquisar" />
 					</div>
 				</div>
 
 			</div>
 
 		</h:form>
-	</div>
+	
 
-</h:body>
+	
+
+</body>
 </html>

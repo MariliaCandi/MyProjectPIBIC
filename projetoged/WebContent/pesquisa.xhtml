@@ -6,67 +6,77 @@
 
 <h:head>
 	<title>Amprodoc</title>
-	
+
 
 	<!-- Bootstrap -->
 	<link href="resources/css/bootstrap.min.css" rel="stylesheet" />
 	<script type="text/javascript" src="resources/js/bootstrap.js"></script>
 
-	<!-- paginação -->	
+	<!-- paginação -->
 	<script type="text/javascript" src="resources/js/jquery.min.js"></script>
 	<link href="http://www.jqueryscript.net/css/jquerysctipttop.css"
 		rel="stylesheet" type="text/css" />
 	<script src="http://code.jquery.com/jquery-2.1.1.min.js"
 		type="text/javascript"></script>
 	<script src="resources/js/jquery.bdt.js" type="text/javascript"></script>
-	
+
 	<!-- Custom CSS -->
-    <link href="resources/css/estiloPesquisa.css" rel="stylesheet" />
-   
+	<link href="resources/css/estiloPesquisa.css" rel="stylesheet" />
+
 	<script>
 	    $(document).ready( function () {
 	        $('#tabelaDoc').bdt();
 	    });
+	    
+	    window.onload = function() {
+	        document.getElementById('formulario:pesquisa').focus();
+	    }
+	    
+	    
 	</script>
 
 </h:head>
 <body>
 
-<nav class="navbar navbar-inverse" >
-		
-		<div class="container-fluid" >
-			<div class="navbar-header" >							
-				<div class="col-lg-7 col-md-offset-1" >			
-					<div class="item">
-						<h:form>					
-							<div class="input-group">
-								<h:inputText onfocus="this.value='';" class="form-control"
-									value="#{documentoBean.consulta}" />
-								<div class="input-group-btn">
-									<h:commandButton class="btn btn-default" value="Pesquisar"
-										action="#{documentoBean.listaDocumentos}" />
-								</div>
-							</div>
-						</h:form>
-					</div>
-				</div>	
-			</div>
-		</div>
-		<br/>
-	</nav>
+<div class="nav nav-tabs">
 
+
+		<div class="col-lg-7 col-md-offset-1">
+
+
+			
+			<h:form id="formulario">		
+			<img src="resources/img/logoAmprodoc2.jpg" />	
+			<div class="input-group">	
+			
+					<h:inputText type="text" id="pesquisa" class="form-control"
+						value="#{documentoBean.consulta}" />
+				
+					<div class="input-group-btn">				
+						<h:commandButton  value="Pesquisar" class="btn btn-default"
+							action="#{documentoBean.listaDocumentos}" />
+					</div>
+			</div>		
+			</h:form>
+
+		</div>
+</div>
 	
-	<div class="col-lg-7 col-md-offset-1">		
+	<br />
+
+
+
+	<div class="col-lg-7 col-md-offset-1">
 		<br /> <br />
 
 		<h:dataTable id="tabelaDoc" value="#{documentoBean.documentos}"
 			var="documento" border="0" cellspacing="20">
-			
-			<!-- Nomes e links dos arquivos -->				
+
+			<!-- Nomes e links dos arquivos -->
 			<h:column>
-			<h:form>
-				<!-- abre documento em nova aba -->
-				<script>
+				<h:form>
+					<!-- abre documento em nova aba -->
+					<script>
 					function abreLink(extencao, url){
 						
 						if(extencao == '.pdf') {
@@ -77,31 +87,36 @@
 					
 					}
 				</script>
-				
-				<h:commandLink   onclick="abreLink('#{documento.extensao}','#{documento.url}')"><h:outputText
-						value="#{documento.nomeArquivo}" />	
-						
-						<f:setPropertyActionListener value="#{documento.extensao}" target="#{documentoBean.extensao}" />
-						
+
+					<h:commandLink
+						onclick="abreLink('#{documento.extensao}','#{documento.url}')">
+						<h:outputText value="#{documento.nomeArquivo}" />
+
+						<f:setPropertyActionListener value="#{documento.extensao}"
+							target="#{documentoBean.extensao}" />
+
 						<!-- seta o atributo 'url' no bean com a url referente ao nome do documento clicado-->
-						<f:setPropertyActionListener value="#{documento.url}" target="#{documentoBean.url}" />
-						
+						<f:setPropertyActionListener value="#{documento.url}"
+							target="#{documentoBean.url}" />
+
 						<!-- seta o atributo 'numeroPaginas' no bean com o numero de paginas  referente ao nome do documento clicado-->
-						<f:setPropertyActionListener value="#{documento.numeroPaginas}" target="#{documentoBean.numeroPaginas}" />  					
-				</h:commandLink>			
-						<br/>
-							
-						<h:outputText value="#{documento.dataCriacao}" styleClass="data"/>			
-						<h:outputText value="Score: #{documento.score}." styleClass="score"/>
-						<br/>
-						<h:outputText value="#{documento.conteudoTextual}" styleClass="data"/>
+						<f:setPropertyActionListener value="#{documento.numeroPaginas}"
+							target="#{documentoBean.numeroPaginas}" />
+					</h:commandLink>
+					<br />
+
+					<h:outputText value="#{documento.dataCriacao}" styleClass="data" />
+					<h:outputText value="Score: #{documento.score}." styleClass="score" />
+					<br />
+					<h:outputText value="#{documento.conteudoTextual}"
+						styleClass="data" />
 				</h:form>
 			</h:column>
-			
-			
+
+
 		</h:dataTable>
-		<br />	<br />	<br /> <br />	<br />	<br />
+		<br /> <br /> <br /> <br /> <br /> <br />
 	</div>
-	
+
 </body>
 </html>

@@ -35,8 +35,11 @@ public class DocumentoBean {
 		return "pesquisa?faces-redirect=true"; 
 	}
 	
-	public List<DocumentoTO> listaDocumentos(){
-		documentos = consultaService.buscaDocumentosPorConteudo(consulta);				
+	public List<DocumentoTO> listaDocumentos(){		
+		documentos = consultaService.buscaDocumentosPorConteudo(consulta);	
+		//tirando o objeto da sessao 
+		consulta = null;
+		  
 		return documentos;
 	}	
 	
