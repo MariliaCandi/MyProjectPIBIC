@@ -1,2 +1,2 @@
 # MyProjectPIBIC
-arquivos relacionados ao meu projeto PIBIC e TCC.
+Arquivos relacionados ao meu projeto PIBIC e TCC.
